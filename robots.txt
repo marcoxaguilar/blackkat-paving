@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.blackkatpaving.com/sitemap.xml
+Sitemap: https://tubular-paletas-f295fa.netlify.app/sitemap.xml
