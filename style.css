@@ -113,9 +113,9 @@ header.site{
   font-weight:800;font-stretch:expanded;text-transform:uppercase;letter-spacing:.01em;font-size:1.15rem}
 .brand .kat{color:var(--stripe)}
 .brand svg{width:34px;height:34px;flex:0 0 auto}
-.brand-logo{height:50px;width:auto;display:block;border-radius:6px;flex:0 0 auto}
-footer .brand-logo{height:60px}
-@media(max-width:560px){.brand-logo{height:42px}}
+.brand-logo{height:56px;width:auto;display:block;border-radius:6px;flex:0 0 auto}
+footer .brand-logo{height:66px}
+@media(max-width:560px){.brand-logo{height:46px}}
 .nav-links{display:flex;gap:1.1rem;margin-left:auto;align-items:center}
 .nav-links a{color:#CFC9BF;font-weight:600;font-size:.93rem;padding:.3rem 0;position:relative}
 .nav-links a:hover{color:var(--line)}
@@ -154,14 +154,20 @@ footer .brand-logo{height:60px}
   body.lock{overflow:hidden}
 }
 
+/* ---------- recent work gallery ---------- */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:1.6rem}
+.work-shot{margin:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-l);box-shadow:0 10px 30px rgba(20,17,15,.12)}
+.work-shot img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center}
+@media(max-width:760px){.work-grid{grid-template-columns:1fr;gap:14px}}
+
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--asphalt);color:var(--line);overflow:hidden;isolation:isolate}
-/* hero video background — object-fit:cover fills the hero and crops overflow instead of stretching.
-   It sits ABOVE the painted-grid fallback: if /hero.mp4 is missing the element is transparent and the grid shows through, so the hero never renders empty. */
+/* hero media layers — both fill the hero with object-fit:cover (never stretch) and sit above the painted-grid fallback */
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2;pointer-events:none}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-1;pointer-events:none}
-.hero-scrim{position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(20,17,15,.82) 0%,rgba(20,17,15,.55) 48%,rgba(20,17,15,.16) 100%)}
-.hero--video .wrap{position:relative;z-index:1}
-@media (prefers-reduced-motion:reduce){.hero-video{display:none}} /* fall back to the painted-grid hero for reduced-motion */
+.hero-scrim{position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(20,17,15,.9) 0%,rgba(20,17,15,.66) 42%,rgba(20,17,15,.34) 100%),linear-gradient(0deg,rgba(20,17,15,.45),transparent 55%)}
+.hero--media .wrap{position:relative;z-index:1}
+@media (prefers-reduced-motion:reduce){.hero-video{display:none}} /* image/grid remain as the still fallback */
 .hero::before{ /* parking-lot grid */
   content:"";position:absolute;inset:0;z-index:-3;opacity:.5;
   background-image:linear-gradient(var(--border-d) 1px,transparent 1px),linear-gradient(90deg,var(--border-d) 1px,transparent 1px);
@@ -340,6 +346,9 @@ footer .nap{font-size:.92rem;line-height:1.8}
 footer .nap b{color:var(--line)}
 .foot-bottom{margin-top:2.6rem;padding-top:1.4rem;border-top:1px solid var(--border-d);display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-size:.8rem;color:var(--steel)}
 .foot-bottom a{display:inline}
+.foot-credit{width:100%;text-align:center;margin-top:.5rem;color:var(--steel-2)}
+.foot-credit a{color:var(--stripe);text-decoration:none;font-weight:600}
+.foot-credit a:hover{text-decoration:underline}
 
 /* sticky mobile call bar */
 .callbar{display:none}
